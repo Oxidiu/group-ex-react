@@ -1,20 +1,30 @@
-import React from "react";
+import React, {useState} from "react";
 import "./App.css";
 import CardComponent from "./CardComponent.jsx";
 
 function App() {
   const [items, setItems] = useState([]);
-  const []
+  const [inputText, setInputText] = useState("");
+  
+
 
   return (
     <div>
-      <input/>
+      <input onChange={(ev) => {
+        setInputText(ev.target.value)
+        console.log(inputText)
+      }}/>
+      <button onClick={() => {
+        setItems([...items, inputText])
+        console.log(items)
+      }}>Add Item</button>
 
-      <CardComponent
-        content={
-          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam."
-        }
-      ></CardComponent>
+      {items.map((item, i) => {
+        return <CardComponent key={`item number ${i}`}
+        content={item}
+        />
+      })}
+      
     </div>
   );
 }

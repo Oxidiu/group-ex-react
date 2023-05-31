@@ -16,14 +16,14 @@ React app will run on **localhost:3000**.
 
 Add an input tag and a button tag to the App component.
 
-In App.jsx:
+<!-- In App.jsx:
 Add a state variable called "items", which is an array.
-Add a state variable called "inputText", which is a string.
+Add a state variable called "inputText", which is a string. -->
 
-Save the text we input in that input tag in "inputText".
+<!-- Save the text we input in that input tag in "inputText". -->
 
-Add a button called "Add item". When pressed, it will add the text in "items".
+<!-- Add a button called "Add item". When pressed, it will add the text in "items". -->
 
-Use items.map() in the App's render functionality, to render a card component for each item in the items.
-Give each card component a "key" property
+<!-- Use items.map() in the App's render functionality, to render a card component for each item in the items. -->
+<!-- Give each card component a "key" property -->
 
