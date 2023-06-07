@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import CardComponent from "./CardComponent.jsx";
 import LoginComponent from "./LoginComponent";
@@ -18,10 +18,23 @@ function App() {
 
   const deleteItem = (index) => {
     // needs to delete the item in the items array
-    let toUpdateItems = [...items];
-    toUpdateItems.splice(index, 1);
-    setItems(toUpdateItems);
+    let newItems = [...items];
+    newItems.splice(index, 1);
+    setItems(newItems);
+    localStorage.setItem(newItems)
   };
+  // ↓ Recover items from local storage
+  useEffect(() => {
+    const storedItems = localStorage.getItem(("items"))
+    if (storedItems) {
+      setItems(JSON.parse(storedItems))
+    }
+  }, [])
+
+  // ↓ Save data to local storage
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(items))
+  },[items])
   return (
     <div>
       <h1>{username}</h1>
@@ -42,6 +55,7 @@ function App() {
           onClick={() => {
             let itemsNew = [...items, inputText];
             setItems(itemsNew);
+            localStorage.setItem(JSON.stringify(itemsNew))
           }}
         >
           Add Item
