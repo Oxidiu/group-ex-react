@@ -6,6 +6,18 @@ function App() {
   const [items, setItems] = useState([]);
   const [inputText, setInputText] = useState("");
 
+  const updateItem = (index, text) => {
+    const newItems = [...items];
+    newItems[index] = text;
+    setItems(newItems);
+  };
+
+  const deleteItem = (index) => {
+    const newItems = [...items]
+    newItems.splice(index, 1);
+    setItems(newItems);
+  }
+
   return (
     <div>
       <input
@@ -23,8 +35,14 @@ function App() {
       >
         Add Item
       </button>
-      {items.map((item) => (
-        <CardComponent content={item}></CardComponent>
+      {items.map((item, i) => (
+        <CardComponent 
+          content={item} 
+          key={`cardcpmp ${i}`} 
+          index={i}
+          updateItem={updateItem}
+          deleteItem={deleteItem}
+        />
       ))}
     </div>
   );
