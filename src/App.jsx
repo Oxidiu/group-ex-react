@@ -14,11 +14,12 @@ function App() {
     setUserName(value)
   }
   const handleLogin = () => {
-    setLoggedIn(true)
+    setLoggedIn(!loggedIn)
     console.log(loggedIn)
     
     
   }
+  
 
   const updateItem = (index, text) => {
     let toUpdateItems = [...items];
@@ -47,11 +48,13 @@ function App() {
           setInputText(text);
         }}
         type="text"
+        value={inputText}
       />
       <button className={loggedIn === true ? "": "hidden"}
-        onClick={() => {
+        onClick={(ev) => {
           let itemsNew = [...items, inputText];
           setItems(itemsNew);
+          setInputText("");
         }}
       >
         Add Item
@@ -65,6 +68,7 @@ function App() {
           content={item}
         ></CardComponent>
       ))}
+      <button className={loggedIn === true ? "": "hidden"} onClick={handleLogin}>Log Out</button>
     </div>
   );
 }
