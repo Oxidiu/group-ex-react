@@ -1,11 +1,14 @@
+import "./Login.css"
+
 export default function CardComponent({
   content,
   index,
   updateItem,
   deleteItem,
+  loggedIn
 }) {
   return (
-    <div>
+    <div  className={loggedIn === true ? "": "hidden"}>
       <input
         type="text"
         value={content}
